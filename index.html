@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support de motivation – Anaïs Mattle</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .theme-light {
+        --bg: #f9f5f7;
+        --surface: #ffffff;
+        --texte: #2c2c2c;
+        --gris: #666666;
+        --bordeaux: #7b2d5a;
+        --border: #e8d0dc;
+        --hover: #f7eff4;
+      }
+      .theme-dark {
+        --bg: #1a1218;
+        --surface: #251820;
+        --texte: #ede0e8;
+        --gris: #a890a0;
+        --bordeaux: #c46fa0;
+        --border: #3d2535;
+        --hover: #2a1a22;
+      }
+
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--texte);
+        min-height: 100vh;
+        padding-bottom: 56px;
+      }
+
+      /* ── BANDEAU ── */
+      .bandeau {
+        background-color: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 9px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .bandeau-text {
+        font-size: 0.78rem;
+        color: var(--gris);
+        line-height: 1.4;
+      }
+      .bandeau-btn {
+        background-color: var(--bordeaux);
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 14px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .bandeau-btn:hover {
+        opacity: 0.88;
+      }
+
+      /* ── HEADER ── */
+      header {
+        background-color: var(--surface);
+        border-bottom: 3px solid var(--bordeaux);
+        padding: 44px 40px 36px;
+      }
+
+      .header-inner {
+        max-width: 700px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      .header-photo {
+        width: 90px;
+        height: 90px;
+        flex-shrink: 0;
+        align-self: center;
+      }
+      .header-photo img {
+        width: 90px;
+        height: 90px;
+      }
+
+      .header-name h1 {
+        font-size: 2.4rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        line-height: 1.1;
+      }
+      .header-name h1 .prenom {
+        color: var(--bordeaux);
+      }
+      .header-name h1 .nom {
+        color: var(--texte);
+      }
+
+      .header-candidature {
+        text-align: right;
+      }
+      .header-candidature .label {
+        font-size: 0.68rem;
+        letter-spacing: 0.13em;
+        color: var(--bordeaux);
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .header-candidature .detail {
+        font-size: 0.88rem;
+        color: var(--gris);
+        line-height: 1.75;
+      }
+
+      /* ── INTRO ── */
+      .intro {
+        max-width: 700px;
+        margin: 40px auto 0;
+        padding: 0 24px;
+      }
+      .intro p {
+        font-size: 0.96rem;
+        line-height: 1.82;
+        color: var(--texte);
+        text-align: justify;
+      }
+
+      /* ── PULL QUOTE ── */
+      .pull {
+        max-width: 580px;
+        margin: 36px auto;
+        padding: 0 24px;
+        text-align: center;
+        font-size: 1.05rem;
+        font-style: italic;
+        font-weight: 600;
+        color: var(--bordeaux);
+        line-height: 1.65;
+      }
+      .pull::before,
+      .pull::after {
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: var(--border);
+        margin: 14px auto;
+        width: 50%;
+      }
+
+      /* ── ACCORDÉONS ── */
+      .accordion-section {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .accordion-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.15em;
+        color: var(--bordeaux);
+        text-transform: uppercase;
+        font-weight: 700;
+        margin: 36px 0 10px;
+      }
+
+      details {
+        background-color: var(--surface);
+        border-left: 3px solid var(--border);
+        margin-bottom: 6px;
+      }
+      details[open] {
+        border-left-color: var(--bordeaux);
+      }
+
+      summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.93rem;
+        color: var(--texte);
+        background-color: var(--surface);
+        list-style: none;
+        user-select: none;
+        gap: 12px;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::after {
+        content: "+";
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: var(--bordeaux);
+        flex-shrink: 0;
+        transition: transform 0.25s;
+      }
+      details[open] summary::after {
+        transform: rotate(45deg);
+      }
+      summary:hover {
+        background-color: var(--hover);
+      }
+
+      .detail-body {
+        padding: 4px 18px 18px;
+        font-size: 0.91rem;
+        line-height: 1.8;
+        color: var(--texte);
+        background-color: var(--surface);
+        text-align: justify;
+      }
+      .detail-body p + p {
+        margin-top: 10px;
+      }
+
+      /* ── CARTE CONTACT ── */
+      .contact-card {
+        max-width: 700px;
+        margin: 48px auto 0;
+        padding: 0 24px;
+      }
+      .contact-card-inner {
+        background-color: var(--surface);
+        border-top: 2px solid var(--bordeaux);
+        padding: 22px 24px;
+      }
+      .contact-sign {
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.06em;
+        color: var(--texte);
+        margin-bottom: 14px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 24px;
+        margin-bottom: 16px;
+      }
+      .contact-item {
+        font-size: 0.84rem;
+        color: var(--gris);
+        line-height: 1.6;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .contact-item a {
+        color: var(--bordeaux);
+        text-decoration: none;
+      }
+      .contact-github {
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+        font-size: 0.82rem;
+        color: var(--gris);
+      }
+      .contact-github a {
+        color: var(--bordeaux);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .contact-github a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 560px) {
+        header {
+          padding: 28px 20px 24px;
+        }
+        .header-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .header-name h1 {
+          font-size: 1.6rem;
+        }
+        .header-candidature {
+          text-align: left;
+        }
+        .intro,
+        .accordion-section,
+        .contact-card {
+          padding: 0 16px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .bandeau {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body class="theme-light">
+    <!-- ── BANDEAU ── -->
+    <div class="bandeau">
+      <span class="bandeau-text"
+        >Certains navigateurs forcent leurs propres couleurs et peuvent ignorer
+        celles de la page. Si le rendu vous semble incorrect, n'hésitez pas à
+        basculer entre les deux thèmes.</span
+      >
+      <button class="bandeau-btn" id="themeBtn">🌙 Thème sombre</button>
+    </div>
+
+    <!-- ── HEADER ── -->
+    <header>
+      <div class="header-inner">
+        <div class="header-name">
+          <h1>
+            <span class="prenom">ANAÏS</span><br /><span class="nom"
+              >MATTLE</span
+            >
+          </h1>
+        </div>
+        <div class="header-photo">
+          <img src="photo.png" alt="Anaïs Mattle" />
+        </div>
+        <div class="header-candidature">
+          <div class="label">Support de motivation</div>
+          <div class="detail">
+            Candidature alternance BTS SIO<br />
+            Support Technique / Développeuse<br />
+            Gabby – Euratechnologies, Lille
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── INTRO ── -->
+    <div class="intro">
+      <p>
+        Mon parcours vers le numérique s'est construit à partir de besoins
+        concrets. Lorsqu'un problème revient régulièrement ou qu'un manque se
+        fait sentir, j'ai tendance à chercher une solution — puis à apprendre
+        les outils nécessaires pour la mettre en œuvre. C'est cette démarche qui
+        m'a amenée, progressivement, vers le développement, les tests, la
+        documentation et l'accompagnement des utilisateurs.
+      </p>
+    </div>
+
+    <div class="pull">
+      « Ce qui m'intéresse le plus, c'est de faire le lien entre les
+      utilisateurs et les outils. »
+    </div>
+
+    <!-- ── ACCORDÉONS ── -->
+    <div class="accordion-section">
+      <p class="accordion-label">Parcours &amp; expériences</p>
+
+      <details>
+        <summary>Pourquoi le numérique — et pourquoi maintenant ?</summary>
+        <div class="detail-body">
+          <p>
+            Je n'ai pas suivi un cursus classique vers l'informatique — j'y suis
+            arrivée par la pratique, en résolvant de vrais problèmes dans des
+            projets communautaires et personnels. Bots Discord en Python et SQL,
+            automatisations Google Apps Script, infrastructure cloud sous Linux
+            : chaque compétence s'est construite parce qu'elle répondait à un
+            besoin réel.
+          </p>
+          <p>
+            Aujourd'hui, je formalise ce parcours avec un BTS SIO en alternance,
+            parce que je veux ancrer ces acquis dans un cadre professionnel et
+            continuer à progresser rapidement, en situation réelle.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Ce que j'ai déjà mis en pratique</summary>
+        <div class="detail-body">
+          <p>
+            Sur une communauté Discord de plus de 2 500 membres, j'ai développé
+            et fait évoluer un bot utilisé quotidiennement. Cela impliquait
+            d'échanger avec les utilisateurs, recueillir leurs retours,
+            identifier de nouveaux besoins, tester avant déploiement, rédiger de
+            la documentation et accompagner la prise en main — un cycle complet,
+            du terrain à la mise en production.
+          </p>
+          <p>
+            J'ai également participé à des phases de bêta-test sur un jeu vidéo
+            avec une approche méthodique : vérification de parcours utilisateur,
+            reproduction d'anomalies, retours structurés à l'équipe de
+            développement.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Mon projet web en cours</summary>
+        <div class="detail-body">
+          <p>
+            Je développe actuellement un site personnel avec Astro, HTML, CSS et
+            JavaScript. Il s'agit d'un projet bilingue français/anglais avec
+            URLs traduites, switch thème clair/sombre, navigation responsive
+            avec menu burger, et une section dédiée à mes expérimentations
+            techniques — dont un tableau de bord de supervision de mon
+            infrastructure cloud.
+          </p>
+          <p>
+            Ce projet m'a amenée à travailler la structure de composants
+            réutilisables, le routage i18n, et l'intégration de services
+            externes. C'est aussi l'occasion de mieux comprendre les différentes
+            briques qui composent un service numérique complet, de l'hébergement
+            à la mise en production.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Mon rapport à la documentation et au support</summary>
+        <div class="detail-body">
+          <p>
+            J'ai appris que la compréhension d'un outil est parfois aussi
+            importante que l'outil lui-même. Rédiger une FAQ claire, structurer
+            un ticket utile pour l'équipe tech, créer un guide de prise en main
+            : ce sont des tâches que je prends au sérieux et dans lesquelles je
+            m'investis naturellement.
+          </p>
+          <p>
+            Mes expériences dans l'animation et le service m'ont aussi appris à
+            adapter mon discours à mon interlocuteur — qu'il soit utilisateur
+            non-technique ou développeur qui a besoin de précision.
+          </p>
+        </div>
+      </details>
+
+      <p class="accordion-label">Chez Gabby</p>
+
+      <details>
+        <summary>Ce qui me plaît dans votre offre</summary>
+        <div class="detail-body">
+          <p>
+            La place accordée à l'analyse des retours terrain, aux tests
+            fonctionnels, à la documentation et à l'amélioration continue du
+            produit correspond exactement à ce que j'ai fait de manière autonome
+            jusqu'ici — et à ce que je veux continuer à développer dans un
+            contexte professionnel.
+          </p>
+          <p>
+            Faire le lien entre les Sales et l'équipe Tech, qualifier ce qui
+            nécessite une escalade, rédiger un ticket clair et bien structuré :
+            c'est précisément le type de rôle où je pense pouvoir être utile et
+            progresser vite.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Ce que j'apporte, concrètement</summary>
+        <div class="detail-body">
+          <p>
+            Une vraie autonomie sur les projets personnels — je suis habituée à
+            chercher, tester, documenter et itérer sans supervision. Une
+            sensibilité aux besoins utilisateurs, construite sur des années
+            d'animation de communautés. Et une capacité à progresser rapidement
+            sur de nouveaux outils, en m'appuyant notamment sur l'IA pour
+            prototyper et explorer.
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── CARTE CONTACT ── -->
+    <div class="contact-card">
+      <div class="contact-card-inner">
+        <div class="contact-sign">Anaïs Mattlé</div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            ✉&nbsp;<a href="mailto:a.mattle@outlook.com"
+              >a.mattle@outlook.com</a
+            >
+          </div>
+          <div class="contact-item">☎&nbsp;06 09 56 29 33</div>
+          <div class="contact-item">📍&nbsp;62500 Saint-Omer</div>
+          <div class="contact-item">🚆&nbsp;Ligne SNCF Lille/Calais</div>
+          <div class="contact-item">🚗&nbsp;Permis B – Véhicule personnel</div>
+          <div class="contact-item">💻&nbsp;Distanciel possible</div>
+          <div class="contact-item">🎓&nbsp;My Digital School - Lille</div>
+          <div class="contact-item">🕔&nbsp;3 jours / 2 jours</div>
+        </div>
+        <div class="contact-github">
+          Code source de cette page et autres projets :
+          <a href="https://github.com/Evalexart" target="_blank"
+            >github.com/Evalexart</a
+          >
+          <br />
+          Consulter mon CV :
+          <a href="cv.pdf" target="_blank">ouvrir dans le navigateur</a>
+          <br />
+          Voir le planning d'alternance :
+          <a href="planning.pdf" target="_blank">ouvrir dans le navigateur</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const btn = document.getElementById("themeBtn");
+      const body = document.body;
+      let dark = false;
+
+      btn.addEventListener("click", () => {
+        dark = !dark;
+        body.className = dark ? "theme-dark" : "theme-light";
+        btn.textContent = dark ? "☀️ Thème clair" : "🌙 Thème sombre";
+      });
+    </script>
+  </body>
+</html>
