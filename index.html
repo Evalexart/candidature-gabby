@@ -327,6 +327,7 @@
         <div class="door-frame">
           <div class="door door-left">
             <div class="hanging-sign">
+              <span class="mobile-pin"></span>
               <svg
                 style="
                   position: absolute;
@@ -570,13 +571,49 @@
 
         .hanging-sign {
           top: 24%;
+          margin-top: -14px;
           width: 72px !important;
           font-size: 0.58rem;
+          position: relative;
         }
+
         .hanging-sign svg {
-          width: 110px !important;
-          left: -18px !important;
+          display: none !important;
         }
+
+        .hanging-sign::before {
+          content: "";
+          position: absolute;
+          width: 29px;
+          height: 2px;
+          background: #ede0e8;
+          top: -6px;
+          left: 7px;
+          transform: rotate(-28deg);
+        }
+
+        .hanging-sign::after {
+          content: "";
+          position: absolute;
+          width: 29px;
+          height: 2px;
+          background: #ede0e8;
+          top: -6px;
+          right: 7px;
+          transform: rotate(28deg);
+        }
+
+        .mobile-pin {
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #ede0e8;
+          top: -14px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
         .sign-board {
           width: 150px;
           height: 150px;
@@ -589,18 +626,99 @@
         }
       }
       @media (max-height: 500px) and (orientation: landscape) {
+        .door-scene {
+          gap: 24px;
+          align-items: flex-end;
+        }
+
         .door-frame {
-          width: 220px;
-          height: 320px;
+          width: 190px;
+          height: 275px;
+          border-width: 5px;
+        }
+
+        .door {
+          border-width: 1px;
+        }
+
+        .door-left {
+          border-right: none;
+        }
+
+        .door::after {
+          width: 6px;
+          height: 6px;
+        }
+
+        .door-left::after {
+          right: 10px;
+        }
+
+        .door-right::after {
+          left: 10px;
+        }
+
+        .hanging-sign {
+          width: 66px;
+          padding: 5px;
+          top: 16%;
+          font-size: 0.42rem;
+          border-width: 2px;
+        }
+
+        .hanging-sign svg {
+          display: none !important;
+        }
+
+        .hanging-sign::before {
+          content: "";
+          position: absolute;
+          width: 27px;
+          height: 2px;
+          background: #ede0e8;
+          top: -6px;
+          left: 6px;
+          transform: rotate(-28deg);
+        }
+
+        .hanging-sign::after {
+          content: "";
+          position: absolute;
+          width: 27px;
+          height: 2px;
+          background: #ede0e8;
+          top: -6px;
+          right: 6px;
+          transform: rotate(28deg);
+        }
+
+        .mobile-pin {
+          position: absolute;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #ede0e8;
+          top: -13px;
+          left: 50%;
+          transform: translateX(-50%);
         }
 
         .sign-board {
-          width: 140px;
-          height: 140px;
+          width: 145px;
+          height: 145px;
+          padding: 6px;
+          border-width: 3px;
         }
 
-        .door-scene {
-          gap: 20px;
+        .sign-board p {
+          font-size: 0.54rem;
+          line-height: 1.2;
+          margin-bottom: 3px;
+        }
+
+        .sign-stick {
+          width: 6px;
+          height: 40px;
         }
       }
     </style>
