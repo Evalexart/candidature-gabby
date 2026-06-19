@@ -4,7 +4,7 @@ Et vous voilà descendu·e à la cave — merci d’avoir poussé la visite jusq
 
 ## 📄 Le contexte
 
-Cette page accompagne ma candidature au poste de Support Technique / Développeuse chez Gabby. Votre offre demandait un “support de motivation” plutôt qu’une lettre classique — j’ose espérer que c’était justement pour laisser la porte ouverte à ce genre d’initiative, et ça m’a donné envie d’en profiter. J’ai construit quelque chose de clair et d’aéré, avec une petite entrée en clin d’œil à votre activité : une porte à pousser et une pancarte façon visite immobilière avant d’accéder au contenu. Le travail derrière reste sérieux et méthodique, mais ça n’empêche pas une touche d’humour au passage.
+Cette page accompagne ma candidature au poste de Support Technique / Développeuse chez Gabby. Votre offre demandait un “support de motivation” plutôt qu’une lettre classique — j’ose espérer que c’était justement pour laisser la porte ouverte à ce genre d’initiative, et ça m’a donné envie d’en profiter. J’ai voulu que ce soit clair et aéré, avec une petite entrée en clin d’œil à votre activité : une porte à pousser et une pancarte façon visite immobilière avant d’accéder au contenu. Le travail derrière reste sérieux et méthodique, mais ça n’empêche pas une touche d’humour au passage.
 
 ## 🛠️ Côté technique
 
