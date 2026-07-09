@@ -1,25 +1,17 @@
-# Candidature Gabby 👋
+# 🚪 Code source de cette page de motivation
 
-Et vous voilà descendu·e à la cave — merci d’avoir poussé la visite jusqu’ici !
+Et vous voilà descendu·e à la cave... merci d'avoir poussé la visite jusqu'ici.
 
-## 📄 Le contexte
+Cette page accompagne ma candidature au poste de Support Technique / Développeuse chez Gabby.
 
-Cette page accompagne ma candidature au poste de Support Technique / Développeuse chez Gabby. Votre offre demandait un “support de motivation” plutôt qu’une lettre classique — j’ose espérer que c’était justement pour laisser la porte ouverte à ce genre d’initiative, et ça m’a donné envie d’en profiter. J’ai voulu que ce soit clair et aéré, avec une petite entrée en clin d’œil à votre activité : une porte à pousser et une pancarte façon visite immobilière avant d’accéder au contenu. Le travail derrière reste sérieux et méthodique, mais ça n’empêche pas une touche d’humour au passage.
+Votre offre demandait un « support de motivation » plutôt qu'une lettre classique. J'y ai vu l'occasion de proposer un format un peu différent, tout en conservant un contenu sérieux et structuré. L'animation d'ouverture de porte est un clin d'œil à votre activité avant d'accéder au contenu de la candidature.
 
-## 🛠️ Côté technique
+## À propos de ce dépôt
 
-- HTML et CSS pour la structure et la mise en page
-- Animation d’entrée (porte + pancarte) en CSS et JavaScript, testée et ajustée sur desktop, mobile portrait et mobile paysage
-- JavaScript pour le switch de thème clair/sombre
-- Sections déroulantes natives (`<details>` / `<summary>`), sans librairie externe
-- Déploiement sur mon domaine personnel via FTP
+Ce dépôt contient une unique page HTML regroupant la structure, les styles, les scripts JavaScript ainsi que l'animation spécifique à cette candidature.
 
-## 🎓 Une précision
+La page est responsive, propose un thème clair/sombre et est hébergée sur mon domaine personnel.
 
-Le support ne mentionne que My Digital School, puisque c’est par leur intermédiaire que j’ai eu connaissance de l’offre. Comme précisé dans mon mail de candidature, l’alternance est également possible au lycée Gaston Berger, avec un rythme différent.
+Le CV ainsi que certaines ressources communes (fond, photo, plannings...) ne sont pas inclus dans ce dépôt. Ils sont volontairement mutualisés ou conservés en dehors de celui-ci afin de limiter la diffusion de documents personnels et d'éviter leur duplication entre plusieurs candidatures.
 
-## 🔗 Retour à la page
-
-👉 [evalexa.fr/candidature-gabby](https://evalexa.fr/candidature-gabby)
-
-Anaïs Mattle
+Ce dépôt n'a donc pas vocation à être exécuté de manière autonome.
