@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Support de motivation – Anaïs Mattle – Gabby</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Page de motivation – Anaïs Mattle – Gabby</title>
     <meta name="robots" content="noindex, nofollow" />
     <style>
       *,
@@ -15,7 +16,12 @@
       }
 
       .theme-light {
-        --bg: #f9f5f7;
+        --bg: #f7f8fb;
+        --page-overlay: linear-gradient(
+          180deg,
+          rgba(247, 248, 251, 0.42),
+          rgba(247, 248, 251, 0.52)
+        );
         --surface: #ffffff;
         --texte: #2c2c2c;
         --gris: #666666;
@@ -24,7 +30,12 @@
         --hover: #f7eff4;
       }
       .theme-dark {
-        --bg: #1a1218;
+        --bg: #0c1220;
+        --page-overlay: linear-gradient(
+          180deg,
+          rgba(10, 16, 28, 0.74),
+          rgba(10, 16, 28, 0.8)
+        );
         --surface: #251820;
         --texte: #ede0e8;
         --gris: #a890a0;
@@ -33,17 +44,35 @@
         --hover: #2a1a22;
       }
 
+      html {
+        background: var(--bg);
+      }
+
       body {
         font-family: "Segoe UI", Arial, sans-serif;
-        background-color: var(--bg);
         color: var(--texte);
         min-height: 100vh;
         padding-bottom: 56px;
+        background: var(--bg);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          var(--page-overlay),
+          url("../assets/background.webp") center/cover no-repeat,
+          var(--bg);
+        pointer-events: none;
       }
 
       /* ── BANDEAU ── */
       .bandeau {
-        background-color: var(--surface);
+        background: color-mix(in srgb, var(--surface) 32%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
         padding: 9px 20px;
         display: flex;
@@ -74,7 +103,9 @@
 
       /* ── HEADER ── */
       header {
-        background-color: var(--surface);
+        background: color-mix(in srgb, var(--surface) 32%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-bottom: 3px solid var(--bordeaux);
         padding: 44px 40px 36px;
       }
@@ -181,7 +212,9 @@
       }
 
       details {
-        background-color: var(--surface);
+        background: color-mix(in srgb, var(--surface) 32%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-left: 3px solid var(--border);
         margin-bottom: 6px;
       }
@@ -198,7 +231,7 @@
         font-weight: 600;
         font-size: 0.93rem;
         color: var(--texte);
-        background-color: var(--surface);
+        background: transparent;
         list-style: none;
         user-select: none;
         gap: 12px;
@@ -218,7 +251,7 @@
         transform: rotate(45deg);
       }
       summary:hover {
-        background-color: var(--hover);
+        background: rgba(255, 255, 255, 0.05);
       }
 
       .detail-body {
@@ -226,7 +259,7 @@
         font-size: 0.91rem;
         line-height: 1.8;
         color: var(--texte);
-        background-color: var(--surface);
+        background: transparent;
         text-align: justify;
       }
       .detail-body p + p {
@@ -240,7 +273,9 @@
         padding: 0 24px;
       }
       .contact-card-inner {
-        background-color: var(--surface);
+        background: color-mix(in srgb, var(--surface) 32%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-top: 2px solid var(--bordeaux);
         padding: 22px 24px;
       }
@@ -263,13 +298,53 @@
         font-size: 0.84rem;
         color: var(--gris);
         line-height: 1.6;
+        display: grid;
+        grid-template-columns: 1.8rem 1fr;
+        align-items: center;
+        column-gap: 0.35rem;
+      }
+
+      .contact-icon {
+        width: 1.8rem;
         display: flex;
         align-items: center;
-        gap: 8px;
+        justify-content: center;
+        line-height: 1;
+        font-size: 1rem;
       }
       .contact-item a {
         color: var(--bordeaux);
         text-decoration: none;
+      }
+      .school-blocks {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .school-block {
+        flex: 1 1 220px;
+        background: color-mix(in srgb, var(--surface) 45%, transparent);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px 16px;
+        font-size: 0.84rem;
+        color: var(--gris);
+        line-height: 1.7;
+      }
+      .school-block .school-name {
+        display: block;
+        font-weight: 700;
+        color: var(--texte);
+        margin-bottom: 4px;
+      }
+      .school-block a {
+        color: var(--bordeaux);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .school-block a:hover {
+        text-decoration: underline;
       }
       .contact-github {
         padding-top: 12px;
@@ -310,6 +385,13 @@
         .contact-grid {
           grid-template-columns: 1fr;
         }
+        .school-blocks {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .school-block {
+          flex: 1 1 auto;
+        }
         .bandeau {
           flex-direction: column;
           align-items: flex-start;
@@ -320,7 +402,7 @@
   </head>
   <body class="theme-dark">
     <!-- ═══════════════════════════════════════════════════════
-        ANIMATION PORTE D'ENTRÉE — à coller juste après <body class="theme-light">
+        ANIMATION PORTE D'ENTRÉE
         ═══════════════════════════════════════════════════════ -->
 
     <div id="door-overlay">
@@ -384,7 +466,15 @@
         position: fixed;
         inset: 0;
         z-index: 9999;
-        background-color: #1a1218;
+        background:
+          radial-gradient(
+            circle at 50% 44%,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0) 45%
+          ),
+          var(--page-overlay),
+          url("../assets/background.webp") center/cover no-repeat,
+          var(--bg);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -769,7 +859,7 @@
           <img src="../assets/photo.webp" alt="Anaïs Mattle" />
         </div>
         <div class="header-candidature">
-          <div class="label">Support de motivation</div>
+          <div class="label">Page de motivation</div>
           <div class="detail">
             Candidature alternance BTS SIO<br />
             Support Technique / Développeuse<br />
@@ -917,23 +1007,73 @@
     <!-- ── CARTE CONTACT ── -->
     <div class="contact-card">
       <div class="contact-card-inner">
-        <div class="contact-sign">Anaïs Mattlé</div>
+        <div class="contact-sign">Anaïs Mattle</div>
         <div class="contact-grid">
           <div class="contact-item">
-            ✉&nbsp;<a href="mailto:a.mattle@outlook.com"
-              >a.mattle@outlook.com</a
-            >
+            <span class="contact-icon">✉</span>
+            <a href="mailto:a.mattle@outlook.com">a.mattle@outlook.com</a>
           </div>
-          <div class="contact-item">☎&nbsp;06 09 56 29 33</div>
+
           <div class="contact-item">
-            <span style="white-space: nowrap">📍&nbsp; 62500 Saint-Omer</span>
+            <span class="contact-icon">☎</span>
+            <span>06 09 56 29 33</span>
           </div>
-          <div class="contact-item">🚆&nbsp;Ligne SNCF Lille/Calais</div>
-          <div class="contact-item">🚗&nbsp;Permis B – Véhicule personnel</div>
-          <div class="contact-item">💻&nbsp;Distanciel possible</div>
-          <div class="contact-item">🎓&nbsp;My Digital School - Lille</div>
-          <div class="contact-item">🕔&nbsp;3 jours / 2 jours</div>
+
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>62500 Saint-Omer</span>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">🚆</span>
+            <span>Ligne SNCF Lille/Calais</span>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">🚗</span>
+            <span>Permis B – Véhicule personnel</span>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">💻</span>
+            <span>Distanciel possible</span>
+          </div>
         </div>
+
+        <div class="school-blocks">
+          <div class="school-block">
+            <span class="school-name">🎓 My Digital School – Lille</span>
+            <div>🕔 3 jours / 2 jours</div>
+            <div>
+              <a
+                href="https://www.mydigitalschool.com/ecole-multimedia-lille"
+                target="_blank"
+                >Site de l'école</a
+              >
+            </div>
+            <div>
+              <a href="../assets/planning-mds.pdf" target="_blank"
+                >Voir le planning d'alternance</a
+              >
+            </div>
+          </div>
+
+          <div class="school-block">
+            <span class="school-name">🎓 Lycée Gaston Berger – Lille</span>
+            <div>🕔 1 semaine sur 2</div>
+            <div>
+              <a href="https://www.gastonberger.fr/" target="_blank"
+                >Site de l'école</a
+              >
+            </div>
+            <div>
+              <a href="../assets/planning-gb.pdf" target="_blank"
+                >Voir le planning d'alternance</a
+              >
+            </div>
+          </div>
+        </div>
+
         <div class="contact-github">
           Code source de cette page :
           <a
@@ -944,11 +1084,6 @@
           <br />
           Consulter mon CV :
           <a href="cv.pdf" target="_blank">ouvrir dans le navigateur</a>
-          <br />
-          Voir le planning d'alternance :
-          <a href="../assets/planning-mds.pdf" target="_blank"
-            >ouvrir dans le navigateur</a
-          >
         </div>
       </div>
     </div>
